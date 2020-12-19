@@ -1,0 +1,18 @@
+body{
+	background-color: grey;
+	margin: 0px;
+}
+
+.stage{
+	margin: auto;
+	border:5px solid black;
+	background: url('stage.png') center;
+	width: 1000px;
+	height: 600px;
+}
+
+img{
+	width: 100px;
+	margin-left: 450px;
+	margin-top: 250px;
+}
