@@ -1,24 +1,46 @@
-//Variable voor de gif
-var duck = document.getElementById("duck");
-var marginVertical = 250;
-var marginHorizontal = 450
-var duckStyle;
+var duck = document.getElementById("duck");  //Var voor de image
+var direction = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];  //Var voor de directie
 
-function fly(){
-var direction = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+//De functie pakt iedere halve seconde een directie 
+function randomdirection(){
+	var randomdirection = direction[Math.floor(Math.random() * direction.length)];
+	console.log(randomdirection)
 }
-setTimeout(fly, 500)
+setInterval(randomdirection, 500)
 
-direction = "N"
 
-for (i = 0; i < 3; i++) {
-if(direction = "N"){
-	duckStyle = marginVertical - 75;
-	duck.style.marginTop = duckStyle + "px";
-	duckStyle;
-}
+if(randomdirection = "N"){
+
 }
 
+else if(randomdirection = "NE"){
+
+}
+
+else if(randomdirection = "E"){
+
+}
+
+else if(randomdirection = "SE"){
+
+}
+
+else if(randomdirection = "S"){
+
+}
+
+else if(randomdirection = "SW"){
+
+}
+
+else if(randomdirection = "W"){
+
+}
+
+else if(randomdirection = "NW"){
+
+}
 
 
 
