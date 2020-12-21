@@ -3,29 +3,31 @@ body{
 	margin: 0px;
 }
 
-.stage{
-	margin: auto;
+img{
+	position: absolute;
+	margin: 0px 15%;
+}
+
+.backgroundImage{
 	border:5px solid black;
-	background: url('stage.png') center;
 	width: 1000px;
 	height: 600px;
 }
 
-img{
+.duckImage{
 	width: 100px;
-	margin-left: 450px;
-	margin-top: 250px;
+	margin: 250px 45%;
 }
 
 h2{
-	margin: 10px auto;
-	margin-left: 300px;
+	padding-left: 15%;
 }
 
-.hit{
-
+.hitCounter{
+	padding-top: 625px;
+	margin: 0px;
 }
 
-.miss{
-
+.missCounter{
+	margin-top: 10px;
 }

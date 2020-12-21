@@ -1,69 +1,62 @@
-var duck = document.getElementById("duck");  //Var voor de image
-var direction = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];  //Var voor de directie
-var background = document.getElementById("background");
-
-//Puntenteller
-var hitcounter = 0;
-var misscounter = 0;
-var totalscore = 0;
+//Make the images a variable
+var duck = document.getElementById("duckImage");  //Var for the duck hitbox
+var background = document.getElementById("backgroundImage"); //Var for the background hitbox
+//Variables for the margin of the duck
+var duckMarginTop = 250;
+var duckMarginLeft = 450;
 
 
-//De functie pakt iedere halve seconde een directie 
-function randomdirection(){
-	var randomdirection = direction[Math.floor(Math.random() * direction.length)];
+//Change the position of the duck
+direction = directions => {
+let moveDuck = directions[Math.floor(Math.random () * directions.length)];
+	switch(moveDuck) {
+		case "N":
+			duckMarginTop = duckMarginTop - 75;
+	    break;
+	  	case "NE":
+	   		duckMarginTop = duckMarginTop - 75;
+	   		duckMarginLeft = duckMarginLeft + 75
+	    break;
+	  	case "E":
+	   		duckMarginLeft = duckMarginLeft + 75
+	    break;
+	  	case "SE":
+	    	duckMarginTop = duckMarginTop + 75
+	    	duckMarginLeft = duckMarginLeft + 75;
+	    break;
+	  	case "S":
+	   		duckMarginTop = duckMarginTop + 75;
+	    break;
+	  	case "SW":
+	    	duckMarginTop = duckMarginTop + 75;
+	    	duckMarginLeft = duckMarginLeft -75;
+	    break;
+	  	case "W":
+	   		duckMarginLeft = duckMarginLeft -75;
+	    break;
+	   	case "NW":
+	    	duckMarginTop = duckMarginTop - 75;
+	    	duckMarginLeft = duckMarginLeft -75;
+	    break;
+	}
+	//Calculate the margin and change it in the browser
+	document.getElementById("duckImage").style.marginTop = duckMarginTop + "px";
+	document.getElementById("duckImage").style.marginLeft = duckMarginLeft + "px";
 }
-setInterval(randomdirection, 500)
+//Every 1.5 seconds the duck is changing margins
+let fly = setInterval(() => {
+    direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
+}, 1500);
 
 
-if(randomdirection = "N"){
-
-}
-
-else if(randomdirection = "NE"){
-
-}
-
-else if(randomdirection = "E"){
-
-}
-
-else if(randomdirection = "SE"){
-
-}
-
-else if(randomdirection = "S"){
-
-}
-
-else if(randomdirection = "SW"){
-
-}
-
-else if(randomdirection = "W"){
-
-}
-
-else if(randomdirection = "NW"){
-
-}
-
-
+//Change the hit: / miss: to the number you have hit or missed
+let hitCounter = 0;
+let missCounter = 0;
 duck.addEventListener("click", function(){
-	hitcounter = hitcounter + 1;
+ 	hitCounter++; 
+	document.getElementById("hit").innerHTML = "Hit: " + hitCounter;
 });
 background.addEventListener("click", function(){
-	misscounter = misscounter + 1;
+	missCounter++;
+	document.getElementById("miss").innerHTML = "Miss: " + missCounter;
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
