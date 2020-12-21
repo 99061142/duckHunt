@@ -1,14 +1,23 @@
-//Make the images a variable
-var duck = document.getElementById("duckImage");  //Var for the duck hitbox
+//Making the images a variable
+var duck = document.getElementById("duckImage"); //Var for the duck hitbox
 var background = document.getElementById("backgroundImage"); //Var for the background hitbox
 //Variables for the margin of the duck
-var duckMarginTop = 250;
+var duckMarginTop = 250; 
 var duckMarginLeft = 450;
+//Variables for the hits/misses/ammo
+var hitCounter = 1;
+var missCounter = 1;
+var gunAmmo = 0;
 
 
-//Change the position of the duck
-direction = directions => {
-let moveDuck = directions[Math.floor(Math.random () * directions.length)];
+//Every 1.5 seconds the duck is changing margins
+var fly = setInterval(() => {
+	direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
+}, 1500);
+
+
+direction = directions =>{
+	let moveDuck = directions[Math.floor(Math.random () * directions.length)];
 	switch(moveDuck) {
 		case "N":
 			duckMarginTop = duckMarginTop - 75;
@@ -43,20 +52,33 @@ let moveDuck = directions[Math.floor(Math.random () * directions.length)];
 	document.getElementById("duckImage").style.marginTop = duckMarginTop + "px";
 	document.getElementById("duckImage").style.marginLeft = duckMarginLeft + "px";
 }
-//Every 1.5 seconds the duck is changing margins
-let fly = setInterval(() => {
-    direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
-}, 1500);
+
+duck.addEventListener("click", function(){ //Changes the hit counter and decrease your ammo 
+	document.getElementById("hit").innerHTML = "Hits: " + hitCounter++;
+	gunAmmoCounter();
+});
+background.addEventListener("click", function(){ //Changes the miss counter and decrease your ammo
+	document.getElementById("miss").innerHTML = "Misses: " + missCounter++;
+	gunAmmoCounter();
+});
 
 
-//Change the hit: / miss: to the number you have hit or missed
-let hitCounter = 0;
-let missCounter = 0;
-duck.addEventListener("click", function(){
- 	hitCounter++; 
-	document.getElementById("hit").innerHTML = "Hit: " + hitCounter;
-});
-background.addEventListener("click", function(){
-	missCounter++;
-	document.getElementById("miss").innerHTML = "Miss: " + missCounter;
-});
+function gunAmmoCounter(){
+	gunAmmo++
+	if(gunAmmo >= 3){
+		//Deletes the duck of the screen
+		duck.style.display = "none"
+		//Replace the hit/miss counters with an end description and points
+		miss.style.display = "none"
+		document.getElementById("hit").innerHTML =
+		"Your dont have enough ammo to go further. This is your score:" + "<br>" +
+		document.getElementById("hit").innerHTML + "<br>" +
+		document.getElementById("miss").innerHTML
+
+	}
+	else{
+
+	}
+
+}
+
