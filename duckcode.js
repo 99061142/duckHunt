@@ -10,12 +10,13 @@ var missCounter = 1;
 var gunAmmo = 0;
 
 
-//Every 1.5 seconds the duck is changing margins
+//Every .5 seconds the duck is changing margins
 var fly = setInterval(() => {
 	direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
-}, 1500);
+}, 500);
 
 
+//Says what the code must do if a direction is chosen
 direction = directions =>{
 	let moveDuck = directions[Math.floor(Math.random () * directions.length)];
 	switch(moveDuck) {
@@ -48,37 +49,38 @@ direction = directions =>{
 	    	duckMarginLeft = duckMarginLeft -75;
 	    break;
 	}
-	//Calculate the margin and change it in the browser
 	document.getElementById("duckImage").style.marginTop = duckMarginTop + "px";
 	document.getElementById("duckImage").style.marginLeft = duckMarginLeft + "px";
 }
 
-duck.addEventListener("click", function(){ //Changes the hit counter and decrease your ammo 
+
+//Changes the hit counter
+duck.addEventListener("click", function(){ 
 	document.getElementById("hit").innerHTML = "Hits: " + hitCounter++;
 	gunAmmoCounter();
 });
-background.addEventListener("click", function(){ //Changes the miss counter and decrease your ammo
+//Changes the miss counter
+background.addEventListener("click", function(){
 	document.getElementById("miss").innerHTML = "Misses: " + missCounter++;
 	gunAmmoCounter();
 });
 
 
+//Change the browser if the ammo limit is reached
 function gunAmmoCounter(){
 	gunAmmo++
-	if(gunAmmo >= 3){
+	if(gunAmmo >= 20){
 		//Deletes the duck of the screen
 		duck.style.display = "none"
+		background.style.display = "none"
 		//Replace the hit/miss counters with an end description and points
 		miss.style.display = "none"
 		document.getElementById("hit").innerHTML =
-		"Your dont have enough ammo to go further. This is your score:" + "<br>" +
-		document.getElementById("hit").innerHTML + "<br>" +
+		"Your dont have enough ammo to go further, this is your score:" + "<br>" +
+		document.getElementById("hit").innerHTML + "<br>" + 
 		document.getElementById("miss").innerHTML
-
+		//Change the position of the description and points
+		document.getElementById("hit").style.paddingTop = "25%";
+		document.getElementById("hit").style.paddingLeft = "450px";
 	}
-	else{
-
-	}
-
 }
-
