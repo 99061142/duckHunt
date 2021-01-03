@@ -1,7 +1,7 @@
 //Making the images a variable
 var duck = document.getElementById("duckImage"); //Var for the duck hitbox
 var background = document.getElementById("backgroundImage"); //Var for the background hitbox
-//Variables for the margin of the duck
+//Variables for the margin of the duck(duck image)
 var duckMarginTop = 250; 
 var duckMarginLeft = 450;
 //Variables for the hits/misses/ammo
@@ -10,7 +10,7 @@ var missCounter = 1;
 var gunAmmo = 0;
 
 
-//Every .5 seconds the duck is changing margins
+//Every 0.5 seconds the duck is changing margins
 var fly = setInterval(() => {
 	direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
 }, 500);
@@ -18,20 +18,20 @@ var fly = setInterval(() => {
 
 //Says what the code must do if a direction is chosen
 direction = directions =>{
-	let moveDuck = directions[Math.floor(Math.random () * directions.length)];
+	var moveDuck = directions[Math.floor(Math.random() * directions.length)];
 	switch(moveDuck) {
 		case "N":
 			duckMarginTop = duckMarginTop - 75;
 	    break;
 	  	case "NE":
 	   		duckMarginTop = duckMarginTop - 75;
-	   		duckMarginLeft = duckMarginLeft + 75
+	   		duckMarginLeft = duckMarginLeft + 75;
 	    break;
 	  	case "E":
-	   		duckMarginLeft = duckMarginLeft + 75
+	   		duckMarginLeft = duckMarginLeft + 75;
 	    break;
 	  	case "SE":
-	    	duckMarginTop = duckMarginTop + 75
+	    	duckMarginTop = duckMarginTop + 75;
 	    	duckMarginLeft = duckMarginLeft + 75;
 	    break;
 	  	case "S":
@@ -49,8 +49,8 @@ direction = directions =>{
 	    	duckMarginLeft = duckMarginLeft -75;
 	    break;
 	}
-	document.getElementById("duckImage").style.marginTop = duckMarginTop + "px";
 	document.getElementById("duckImage").style.marginLeft = duckMarginLeft + "px";
+	document.getElementById("duckImage").style.marginTop = duckMarginTop + "px";
 }
 
 
@@ -76,11 +76,11 @@ function gunAmmoCounter(){
 		//Replace the hit/miss counters with an end description and points
 		miss.style.display = "none"
 		document.getElementById("hit").innerHTML =
-		"Your dont have enough ammo to go further, this is your score:" + "<br>" +
+		"You dont have enough ammo to go further, this is your score:" + "<br>" +
 		document.getElementById("hit").innerHTML + "<br>" + 
 		document.getElementById("miss").innerHTML
 		//Change the position of the description and points
-		document.getElementById("hit").style.paddingTop = "25%";
-		document.getElementById("hit").style.paddingLeft = "450px";
+		document.getElementById("hit").style.paddingTop = "25%"
+		document.getElementById("hit").style.paddingLeft = "450px"
 	}
 }
