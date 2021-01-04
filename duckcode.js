@@ -15,9 +15,8 @@ var fly = setInterval(() => {
 	direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
 }, 500);
 
-
 //Says what the code must do if a direction is chosen
-direction = directions =>{
+function direction(directions){
 	var moveDuck = directions[Math.floor(Math.random() * directions.length)];
 	switch(moveDuck) {
 		case "N":
@@ -82,5 +81,7 @@ function gunAmmoCounter(){
 		//Change the position of the description and points
 		document.getElementById("hit").style.paddingTop = "25%"
 		document.getElementById("hit").style.paddingLeft = "450px"
+		//Stops the duck from moving
+		clearInterval(fly);
 	}
 }
