@@ -11,13 +11,16 @@ var gunAmmo = 0;
 
 
 //Every 0.5 seconds the duck is changing margins
-var fly = setInterval(() => {
-	direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
+setInterval(function(){ 
+  	direction(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
 }, 500);
+
 
 //Says what the code must do if a direction is chosen
 function direction(directions){
+	//Choose a random direction every .5 seconds
 	var moveDuck = directions[Math.floor(Math.random() * directions.length)];
+	//Change the margin of the duck
 	switch(moveDuck) {
 		case "N":
 			duckMarginTop = duckMarginTop - 75;
@@ -48,6 +51,7 @@ function direction(directions){
 	    	duckMarginLeft = duckMarginLeft -75;
 	    break;
 	}
+	//Change the margins on the browser
 	document.getElementById("duckImage").style.marginLeft = duckMarginLeft + "px";
 	document.getElementById("duckImage").style.marginTop = duckMarginTop + "px";
 }
@@ -67,7 +71,9 @@ background.addEventListener("click", function(){
 
 //Change the browser if the ammo limit is reached
 function gunAmmoCounter(){
+	//Adds 1 gunAmmo every time you click on the background image or the duck
 	gunAmmo++
+	//If you did shoot 20 times you get a end screen
 	if(gunAmmo >= 20){
 		//Deletes the duck of the screen
 		duck.style.display = "none"
