@@ -41,14 +41,14 @@ function direction(directions){
 	    break;
 	  	case "SW":
 	    	duckMarginTop = duckMarginTop + 75;
-	    	duckMarginLeft = duckMarginLeft -75;
+	    	duckMarginLeft = duckMarginLeft - 75;
 	    break;
 	  	case "W":
-	   		duckMarginLeft = duckMarginLeft -75;
+	   		duckMarginLeft = duckMarginLeft - 75;
 	    break;
 	   	case "NW":
 	    	duckMarginTop = duckMarginTop - 75;
-	    	duckMarginLeft = duckMarginLeft -75;
+	    	duckMarginLeft = duckMarginLeft - 75;
 	    break;
 	}
 	//Change the margins on the browser
@@ -74,8 +74,8 @@ function gunAmmoCounter(){
 	//Adds 1 gunAmmo every time you click on the background image or the duck
 	gunAmmo++
 	//If you did shoot 20 times you get a end screen
-	if(gunAmmo >= 20){
-		//Deletes the duck of the screen
+	if(gunAmmo == 20){
+		//Deletes the duck/background of the screen
 		duck.style.display = "none"
 		background.style.display = "none"
 		//Replace the hit/miss counters with an end description and points
